@@ -48,6 +48,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:text=""
+        android:clickable="false"
         android:layout_marginTop="500dp"
         android:layout_marginLeft="150dp"
         android:inputType="numberDecimal"
@@ -85,12 +86,12 @@
         tools:layout_editor_absoluteY="485dp" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="600dp"
         android:layout_marginLeft="100dp"
-        android:text="BMI category appears here.:"
+        android:text="BMI category appears here..."
         tools:layout_editor_absoluteX="112dp"
         tools:layout_editor_absoluteY="611dp" />
 

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -14,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     Button calculate;
     EditText weightInput, heightInput;
     EditText bmiResult;
+    TextView category;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         heightInput = (EditText) findViewById(R.id.heightInput);
         calculate = (Button) findViewById(R.id.calculate);
         bmiResult = findViewById(R.id.bmiResult);
+        category = findViewById(R.id.category);
 
         calculate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,7 +80,8 @@ public class MainActivity extends AppCompatActivity {
                 status = "Obese Class 2 - Severely Obese";
             else
                 status = "Obese Class 3 - Very Severely Obese";
-            bmiResult.setText(String.format("%.2f", bmi) + " - " + status);
+            bmiResult.setText(String.format("%.2f", bmi));
+            category.setText(status);
             cleardata();
         }
     }
