@@ -13,9 +13,9 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     Button calculate;
-    EditText weightInput, heightInput;
+    EditText weightInput, heightInput ;
     EditText bmiResult;
-    TextView category;
+    TextView category, advicetext ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,12 +23,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        weightInput = (EditText)findViewById(R.id.weightInput);
+        weightInput = (EditText) findViewById(R.id.weightInput);
         heightInput = (EditText) findViewById(R.id.heightInput);
         calculate = (Button) findViewById(R.id.calculate);
-        bmiResult = findViewById(R.id.bmiResult);
-        category = findViewById(R.id.category);
+        bmiResult = (EditText) findViewById(R.id.bmiResult);
+        category = (TextView) findViewById(R.id.category);
+        advicetext = (TextView) findViewById(R.id.adviceText);
 
+
+        bmiResult.setEnabled(false);
         calculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,30 +67,50 @@ public class MainActivity extends AppCompatActivity {
             String heightInputvalue = heightInput.getText().toString().trim();
             float bmi = calculateBmi(weightInputValue, heightInputvalue);
             String status = "";
-            if (bmi < 15)
+            if (bmi < 16) {
                 status = "Very severely underweight";
-            else if (bmi < 16)
+            }
+            else if (bmi >= 16 && bmi <= 17.9) {
                 status = "Severely underweight";
-            else if (bmi < 18.5)
+            }
+            else if (bmi >= 17 && bmi <= 18.4) {
                 status = "Underweight";
-            else if (bmi < 25)
+            }
+            else if (bmi >= 18.5 && bmi <= 24.9) {
                 status = "Normal";
-            else if (bmi < 30)
+            }
+            else if (bmi >= 25 && bmi <= 29.9) {
                 status = "Overweight";
-            else if (bmi < 35)
+            }
+            else if (bmi >= 30 && bmi <= 34.9) {
                 status = "Obese Class 1 - Moderately Obese";
-            else if (bmi < 40)
+            }
+            else if (bmi >= 35 && bmi <= 39.9 ) {
                 status = "Obese Class 2 - Severely Obese";
-            else
+            }
+            else {
                 status = "Obese Class 3 - Very Severely Obese";
+            }
+
+            advisoryProcess(bmi);
             bmiResult.setText(String.format("%.2f", bmi));
             category.setText(status);
-            cleardata();
+
         }
     }
 
-    public void cleardata(){
-        weightInput.setText("");
-        heightInput.setText("");
+    public void advisoryProcess(float bmiresult){
+        double result;
+        if (bmiresult < 18.5){
+            result =  18.5 - bmiresult;
+            advicetext.setText("You need " + String.format("%.2f", result) + " more to be normal.");
+        }else if (bmiresult >= 25){
+            result = bmiresult - 25;
+            advicetext.setText("You need " + String.format("%.2f", result) + " to be normal.");
+
+        }else{
+            advicetext.setText("");
+        }
     }
+    
 }

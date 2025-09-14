@@ -48,6 +48,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:text=""
+        android:editable="false"
         android:clickable="false"
         android:layout_marginTop="500dp"
         android:layout_marginLeft="150dp"
@@ -85,15 +86,18 @@
         tools:layout_editor_absoluteX="84dp"
         tools:layout_editor_absoluteY="485dp" />
 
+
     <TextView
         android:id="@+id/category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="600dp"
+        android:layout_marginTop="560dp"
         android:layout_marginLeft="100dp"
         android:text="BMI category appears here..."
         tools:layout_editor_absoluteX="112dp"
         tools:layout_editor_absoluteY="611dp" />
+
+
 
     <Button
         android:id="@+id/calculate"
@@ -108,4 +112,13 @@
         tools:layout_editor_absoluteY="383dp" />
 
 
+    <TextView
+        android:id="@+id/adviceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="600dp"
+        android:layout_marginLeft="100dp"
+        android:text=" "
+        tools:layout_editor_absoluteX="112dp"
+        tools:layout_editor_absoluteY="611dp" />
 </RelativeLayout>
